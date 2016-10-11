@@ -1,10 +1,22 @@
 <template>
-  <div id="app">
-    <router-link to="/" exact><img class="logo" src="./assets/logo.png"></router-link>
-    <h1>Vue examples</h1>
-    <router-link to="/foo" activeClass="active">Foo</router-link>
-    <router-link :to="{ name: 'user', params: { id: 'John' }}" activeClass="active">John's page</router-link>
-    <router-link to="/users/rafael" activeClass="active">Rafael's page</router-link>
+  <div id="app" class="container">
+    <nav class="navbar navbar-light bg-faded">
+      <router-link to="/" class="navbar-brand" exact><img class="logo" src="./assets/logo.png"></router-link>
+      <ul class="nav navbar-nav">
+        <router-link tag="li" to="/" exact activeClass="active" class="nav-item">
+          <a class="nav-link">Home</a>
+        </router-link>
+        <router-link tag="li" to="/foo" activeClass="active" class="nav-item">
+          <a class="nav-link">Foo</a>
+        </router-link>
+        <router-link tag="li" :to="{ name: 'user', params: { id: 'John' }}" activeClass="active" class="nav-item">
+          <a class="nav-link">John</a>
+        </router-link>
+        <router-link tag="li" to="/users/rafael" activeClass="active" class="nav-item">
+          <a class="nav-link">Rafael's page</a>
+        </router-link>
+      </ul>
+    </nav>
     <router-view></router-view>
   </div>
 </template>
@@ -42,35 +54,8 @@ export default {
 </script>
 
 <style>
-html {
-  height: 100%;
-}
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-#app {
-  color: #2c3e50;
-  margin-top: -100px;
-  max-width: 600px;
-  font-family: Source Sans Pro, Helvetica, sans-serif;
-  text-align: center;
-}
-
-#app a {
-  color: #42b983;
-  text-decoration: none;
-}
-
 .logo {
-  width: 100px;
-  height: 100px
-}
-.active {
-  text-decoration: underline !important;
+  width: 30px;
+  height: 30px
 }
 </style>
