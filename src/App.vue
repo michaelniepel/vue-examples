@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <alert type="success">
+      <span class="icon-ok-circled alert-icon-float-left"></span>
+      <strong>Well Done!</strong>
+      <p>You successfully read this important alert message.</p>
+    </alert>
     <router-link to="/" exact><img class="logo" src="./assets/logo.png"></router-link>
     <h1>Vue examples</h1>
     <router-link to="/foo" activeClass="active">Foo</router-link>
@@ -35,9 +40,15 @@ const router = new VueRouter({
   routes
 })
 
+// import vue-strap
+import { alert } from 'vue-strap'
+
 // export app component
 export default {
-  router
+  router,
+  components: {
+    alert
+  }
 }
 </script>
 
