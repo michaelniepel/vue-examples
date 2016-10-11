@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-link to="/"><img class="logo" src="./assets/logo.png"></router-link>
+    <router-link to="/" exact><img class="logo" src="./assets/logo.png"></router-link>
     <h1>Vue examples</h1>
     <router-link to="/foo" activeClass="active">Foo</router-link>
     <router-link :to="{ name: 'user', params: { id: 'John' }}" activeClass="active">John's page</router-link>
