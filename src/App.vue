@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <img class="logo" src="./assets/logo.png">
-    <h1>Hello</h1>
-    <router-link to="/" activeClass="active">Home</router-link>
+    <router-link to="/"><img class="logo" src="./assets/logo.png"></router-link>
+    <h1>Vue examples</h1>
     <router-link to="/foo" activeClass="active">Foo</router-link>
     <router-link :to="{ name: 'user', params: { id: 'John' }}" activeClass="active">John's page</router-link>
     <router-link to="/users/rafael" activeClass="active">Rafael's page</router-link>
@@ -11,7 +10,34 @@
 </template>
 
 <script>
+// vue stuff
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+// components
+import Hello from './components/Hello'
+import Foo from './components/Foo'
+import User from './components/User'
+
+// use the router
+Vue.use(VueRouter)
+
+// setup paths
+const routes = [
+  { path: '/', component: Hello },
+  { path: '/foo', component: Foo },
+  { path: '/users/:id', name: 'user', component: User }
+]
+
+// setup router
+const router = new VueRouter({
+  mode: 'history',
+  routes
+})
+
+// export app component
 export default {
+  router
 }
 </script>
 
