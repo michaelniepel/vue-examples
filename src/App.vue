@@ -1,0 +1,50 @@
+<template>
+  <div id="app">
+    <img class="logo" src="./assets/logo.png">
+    <h1>Hello</h1>
+    <router-link to="/" activeClass="active">Home</router-link>
+    <router-link to="/foo" activeClass="active">Foo</router-link>
+    <router-link :to="{ name: 'user', params: { id: 'John' }}" activeClass="active">John's page</router-link>
+    <router-link to="/users/rafael" activeClass="active">Rafael's page</router-link>
+    <router-view></router-view>
+  </div>
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style>
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#app {
+  color: #2c3e50;
+  margin-top: -100px;
+  max-width: 600px;
+  font-family: Source Sans Pro, Helvetica, sans-serif;
+  text-align: center;
+}
+
+#app a {
+  color: #42b983;
+  text-decoration: none;
+}
+
+.logo {
+  width: 100px;
+  height: 100px
+}
+.active {
+  text-decoration: underline !important;
+}
+</style>
