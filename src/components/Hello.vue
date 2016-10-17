@@ -1,14 +1,45 @@
 <template>
   <div class="hello">
-    <h2>{{ msg }}</h2>
+    <h2>{{ msg | capitalize }}</h2>
+    <button @click="flipSeen">Flip</button>
+    <p v-if="seen">{{ msg }}</p>
+    <ul>
+      <todo-item v-for="todo in todos" :todo="todo"></todo-item>
+    </ul>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+
+Vue.component('todo-item', {
+  name: 'TodoItem',
+  props: ['todo'],
+  template: '<li>{{ todo.text }}</li>'
+})
+
 export default {
+  name: 'Hello',
   data () {
     return {
-      msg: 'Michael!'
+      msg: 'michael!',
+      seen: false,
+      todos: [
+        { text: 'TEST' },
+        { text: 'RUN' }
+      ]
+    }
+  },
+  methods: {
+    flipSeen () {
+      this.seen = !this.seen
+    }
+  },
+  filters: {
+    capitalize (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
     }
   }
 }
