@@ -2,7 +2,7 @@
   <div class="hello">
     <h2>{{ msg | capitalize }}</h2>
     <button @click="flipSeen">Flip</button>
-    <p v-if="seen">{{ msg }}</p>
+    <p v-if="seen">{{ msg }} {{ reversedMessage }}</p>
     <ul>
       <todo-item v-for="todo in todos" :todo="todo"></todo-item>
     </ul>
@@ -10,13 +10,11 @@
 </template>
 
 <script>
-import Vue from 'vue'
-
-Vue.component('todo-item', {
+let TodoItem = {
   name: 'TodoItem',
   props: ['todo'],
   template: '<li>{{ todo.text }}</li>'
-})
+}
 
 export default {
   name: 'Hello',
@@ -30,6 +28,9 @@ export default {
       ]
     }
   },
+  components: {
+    'todo-item': TodoItem
+  },
   methods: {
     flipSeen () {
       this.seen = !this.seen
@@ -40,6 +41,11 @@ export default {
       if (!value) return ''
       value = value.toString()
       return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  },
+  computed: {
+    reversedMessage () {
+      return this.msg.split('').reverse().join('')
     }
   }
 }
